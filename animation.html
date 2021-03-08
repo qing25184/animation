@@ -1,0 +1,271 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-17 21:13:02
+ * @LastEditTime: 2021-03-09 00:28:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \threejs\animation.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --background-color: #f5f5f5;
+            --border-color:#7591ad;
+            --text-color: #34495e;
+            --color1: #Ec3E27;
+            --color2: #fd79a8;
+            --color3: #0984e3;
+            --color4: #00b894;
+            --color5: #fdcb6e;
+            --color6: #e056fd;
+            --color7: #32CD32;
+            --color8: #bdc581;
+        }
+
+        *,
+        ::after,
+        ::before{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 14px;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif, "Monteserrat";
+        }
+        .channel{
+            position: absolute;
+            width: 80%;
+            text-align: center;
+            top: 10vh;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 5vmin;
+            font-weight: bold;
+            color: #35353588;
+            z-index: 10000;
+        }
+        .container{
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* background-color: #00b894; */
+        }
+    </style>
+    <link rel="stylesheet" href="./css/swchit.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div class="channel">
+        bilibili 编译中梦见未来
+    </div>
+    <div class="container">
+        <!-- 速度切换开关 -->
+        <div id="switch" class="switched">
+            <div class="circle"></div>
+        </div>
+        <!-- 主画布 -->
+        <div class="main">
+            <div class="sun">
+                <span style="--i:1"></span>
+                <span style="--i:2"></span>
+                <span style="--i:3"></span>
+                <span style="--i:4"></span>
+                <span style="--i:5"></span>
+                <span style="--i:6"></span>
+                <span style="--i:7"></span>
+                <span style="--i:8"></span>
+            </div>
+            <!-- 群山， 让我们一起走过山川河流 -->
+            <div class="mountain a"></div>
+            <div class="mountain b"></div>
+            <div class="mountain c"></div>
+            <div class="mountain d"></div>
+            <div class="mountain e"></div>
+
+            <!-- 云和风 仰望天空，看见朵朵白云 -->
+            <div class="cloud_wind_group"  style="--i:1">
+                <div class="cloud a">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="cloud b">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="cloud c">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="wind a">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="wind b">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="wind_small">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="cloud_wind_group" style="--i:2">
+                <div class="cloud a">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="cloud b">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="cloud c">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="wind a">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="wind b">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="wind_small">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <!-- 树 化作一颗树，长在你必经的路旁 -->
+            <div class="tree_wrap">
+                <div class="tree">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <!-- 风车 有风的日子里，你转落了谁的访华 -->
+            <div class="windmil_wrap">
+                <!-- 风车 -->
+                <div class="windmil">
+                    <!-- 风车支架 -->
+                    <div class="pole"></div>
+                    <!-- 风车头部 -->
+                    <div class="head">
+                        <!-- 风车叶片组合 -->
+                        <div class="fan">
+                            <!-- 风车叶片 -->
+                            <span style="--i:1"></span>
+                            <span style="--i:2"></span>
+                            <span style="--i:3"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 风车 -->
+                <div class="windmil left">
+                    <!-- 风车支架 -->
+                    <div class="pole"></div>
+                    <!-- 风车头部 -->
+                    <div class="head">
+                        <!-- 风车叶片组合 -->
+                        <div class="fan">
+                            <!-- 风车叶片 -->
+                            <span style="--i:1"></span>
+                            <span style="--i:2"></span>
+                            <span style="--i:3"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 风车 -->
+                <div class="windmil right">
+                    <!-- 风车支架 -->
+                    <div class="pole"></div>
+                    <!-- 风车头部 -->
+                    <div class="head">
+                        <!-- 风车叶片组合 -->
+                        <div class="fan">
+                            <!-- 风车叶片 -->
+                            <span style="--i:1"></span>
+                            <span style="--i:2"></span>
+                            <span style="--i:3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let swch = document.getElementById('switch')
+        let container = document.getElementsByClassName('container')[0]
+        
+        swch.addEventListener('click',(e)=>{
+            // swch.classList.toggle('switched')
+            if(swch.classList.contains('switched')){
+                swch.classList.remove('switched')
+                // 不选中为快
+                container.classList.remove("slow")
+            }else{
+                swch.classList.add('switched')
+                // 选中为慢
+                container.classList.add("slow")
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+
+#switch{
+    position: relative;
+    width: 60px;
+    height: 30px;
+    border: 2px solid #333;
+    border-radius: 30px;
+    cursor: pointer;
+}
+#switch .circle{
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333333;
+    border-radius: 50%;
+    box-shadow: inset 4px -2px 0 0 var(--color8);
+    transition: all .3s;
+}
+#switch.switched .circle{
+    left: calc(100% - 20px - 3px);
+    box-shadow: inset 4px -2px 0 0 var(--color3);
+}
+#switch::before,
+#switch::after{
+    position: absolute;
+    line-height: 26px;
+    padding: 0 20px;
+    text-transform: uppercase;
+
+    font-weight: 800;
+    /* 取消前后状态名称的鼠标点击效果以及点击事件 */
+    cursor: initial;
+    pointer-events: none;
+}
+#switch::before{
+    content: 'fast';
+    right: 100%;
+    color: var(--color8);
+}
+#switch::after{
+    content: 'slow';
+    left: 100%;
+    color: var(--color3);
+}
