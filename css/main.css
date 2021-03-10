@@ -177,23 +177,56 @@
     box-shadow: 5px 5px 0 0 var(--color4);
 }
 
+/* .main{
+    overflow: visible;
+} */
+
+
+.cloud_wind_wrap_fast{
+    width: 1188px;
+    height: 100%;
+    /* background-color: #e056fd55; */
+    animation: fly 3s linear infinite;
+    animation-play-state: running;
+}
+
+
+.slow .cloud_wind_wrap_fast{
+    animation-play-state: paused;
+}
+.cloud_wind_warp_slow{
+    width: 1188px;
+    height: 100%;
+    /* background-color: #56fd7255; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    animation: fly 6s linear infinite;
+    animation-play-state: running;
+}
+
+
+.slow .cloud_wind_warp_slow{
+    animation-play-state: running;
+}
+
 
 /* 这是云和风 */
 .cloud_wind_group{
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     /* background-color: #333; */
-    animation: fly 12s linear infinite;
-    animation-delay: calc(var(--i) * -6s);
+    /* animation: fly 12s linear infinite;
+    animation-delay: calc(var(--i) * -6s); */
 }
 
 @keyframes fly{
     0%{
-        transform: translateX(100%);
+        transform: translateX(0%);
     }
     100%{
-        transform: translateX(-100%);
+        transform: translateX(-33.33333333333%);
     }
 
 }
