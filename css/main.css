@@ -546,11 +546,17 @@
     left: 0;
     bottom: 0;
     /* background-color: coral; */
+    transform-origin: bottom;
+    transition: all 0.2s linear;
 }
 .tree{
     /* background-color: #e056fd55; */
     transform-origin: bottom;
     animation: tree_move 1s linear infinite;
+}
+
+.slow .tree_wrap{
+    transform: skew(-10deg);
 }
 
 @keyframes tree_move{
@@ -685,7 +691,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: windmil_fan_rotate 4s linear infinite;
+    animation-play-state: paused;
 }
+
+
+
+.slow .windmil .head{
+    animation-play-state: running;
+}
+
 
 .windmil .head .fan{
     position: absolute;
@@ -695,7 +710,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: windmil_fan_rotate 3s linear infinite;
+    animation: windmil_fan_rotate 2s linear infinite;
+    animation-play-state: running;
+}
+
+
+.slow .windmil .head .fan{
+    animation-play-state: paused;
 }
 
 /* 风扇叶中心 */
@@ -719,6 +740,9 @@
     border-radius: 100%;
     transform: rotate(calc(var(--i)* 120deg)) translateX(30px);
 }
+
+
+
 
 /* 旋转动画 */
 @keyframes windmil_fan_rotate{
